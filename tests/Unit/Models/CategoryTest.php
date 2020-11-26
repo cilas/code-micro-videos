@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Models;
 
 use App\Models\Category;
 use App\Traits\Uuid;
@@ -40,7 +40,8 @@ class CategoryTest extends TestCase
     public function testeCastAttribute()
     {
         $dates = [
-            'id' => 'string'
+            'id' => 'string',
+            'is_active' => 'boolean'
         ];
         $category = new Category();
         $this->assertEquals($dates, $category->getCasts());
