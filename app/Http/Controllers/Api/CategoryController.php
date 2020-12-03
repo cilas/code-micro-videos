@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -17,7 +16,9 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
-        return Category::create($request->validated());
+        $category = Category::create($request->validated());
+        $category->refresh();
+        return $category;
     }
 
     public function show(Category $category)
